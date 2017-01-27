@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
+
 import ca.mcgill.ecse321.eventregistration.controller.EventRegistrationController;
 import ca.mcgill.ecse321.eventregistration.controller.InvalidInputException;
 import ca.mcgill.ecse321.eventregistration.model.RegistrationManager; 
@@ -20,6 +22,8 @@ public class ParticipantPage extends JFrame {
 	private JLabel participantNameLabel; 
 	private JButton addParticipantButton; 
 	private RegistrationManager rm; 
+	private String error=null;
+	private JLabel errorMessage; 
 	
 	// constructor of the class
 	public ParticipantPage(RegistrationManager rm){
@@ -32,6 +36,10 @@ public class ParticipantPage extends JFrame {
 		participantNameTextField=new JTextField();
 		participantNameLabel=new JLabel();
 		addParticipantButton=new JButton();
+		
+		// error handling components
+		errorMessage=new JLabel();
+		errorMessage.setForeground(Color.RED);
 		
 		// set the JFrame behavior
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -47,23 +55,28 @@ public class ParticipantPage extends JFrame {
 		layout.setAutoCreateContainerGaps(true);
 		
 		layout.setHorizontalGroup(
-				layout.createSequentialGroup()
+				// error message is added here
+				layout.createParallelGroup()
+				.addComponent(errorMessage)
+				.addGroup(layout.createSequentialGroup()
 				.addComponent(participantNameLabel)
 				.addGroup(layout.createParallelGroup()
 				.addComponent(participantNameTextField, 200, 200, 400)
 				.addComponent(addParticipantButton))
-		);
+		));
 		
 		layout.linkSize(SwingConstants.HORIZONTAL, new java.awt.Component[]
 				{addParticipantButton, participantNameTextField});
 		
 		layout.setVerticalGroup(
 				layout.createSequentialGroup()
+				// error message is added here
+				.addComponent(errorMessage)
 				.addGroup(layout.createParallelGroup()
 				.addComponent(participantNameLabel)
 				.addComponent(participantNameTextField))
 				.addComponent(addParticipantButton)
-				);
+		);
 		pack();
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -73,16 +86,19 @@ public class ParticipantPage extends JFrame {
 	}
 	
 	public void refreshData(){
+		errorMessage.setText(error);
 		participantNameTextField.setText("");
 		pack(); 
 	}
 	private void addParticipantButtonActionPerformed(){
 		EventRegistrationController erc=new EventRegistrationController(rm);
+		error=null;
 		try{
 			erc.createParticipant(participantNameTextField.getText());
 		}catch(InvalidInputException iie){
-			// ignored for now
+			error=iie.getMessage(); 
 		}
 		refreshData();
 	}
+	
 }
