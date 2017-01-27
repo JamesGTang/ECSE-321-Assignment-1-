@@ -1,0 +1,15 @@
+<manager id="1">
+  <registrations id="2"/>
+  <participants id="3">
+    <participant id="4">
+      <name>James</name>
+    </participant>
+    <participant id="5">
+      <name>Mike</name>
+    </participant>
+    <participant id="6">
+      <name>Jason</name>
+    </participant>
+  </participants>
+  <events id="7"/>
+</manager>
