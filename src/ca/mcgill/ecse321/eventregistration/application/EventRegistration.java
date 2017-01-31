@@ -2,6 +2,7 @@ package ca.mcgill.ecse321.eventregistration.application;
 
 import ca.mcgill.ecse321.eventregistration.model.RegistrationManager;
 import ca.mcgill.ecse321.eventregistration.persistence.PersistenceXStream;
+import ca.mcgill.ecse321.eventregistration.view.EventRegistrationPage;
 import ca.mcgill.ecse321.eventregistration.view.ParticipantPage;
 
 public class EventRegistration {
@@ -13,7 +14,7 @@ public class EventRegistration {
 			
 			@Override
 			public void run() {
-				new ParticipantPage(rm).setVisible(true);
+				new EventRegistrationPage(rm).setVisible(true);
 			}
 		});
 	}

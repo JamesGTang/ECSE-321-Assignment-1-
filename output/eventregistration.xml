@@ -1,15 +1,68 @@
 <manager id="1">
-  <registrations id="2"/>
-  <participants id="3">
-    <participant id="4">
-      <name>James</name>
-    </participant>
-    <participant id="5">
-      <name>Mike</name>
-    </participant>
-    <participant id="6">
+  <registrations id="2">
+    <registrtation id="3">
+      <id>1</id>
+      <participant id="4">
+        <name>Mike</name>
+      </participant>
+      <event id="5">
+        <name>Soccer</name>
+        <eventDate id="6">2017-01-04</eventDate>
+        <startTime id="7">15:02:41</startTime>
+        <endTime id="8">15:30:00</endTime>
+      </event>
+    </registrtation>
+    <registrtation id="9">
+      <id>1</id>
+      <participant id="10">
+        <name>James</name>
+      </participant>
+      <event reference="5"/>
+    </registrtation>
+    <registrtation id="11">
+      <id>1</id>
+      <participant reference="10"/>
+      <event id="12">
+        <name>Movie</name>
+        <eventDate id="13">2017-01-03</eventDate>
+        <startTime id="14">15:25:32</startTime>
+        <endTime id="15">15:55:00</endTime>
+      </event>
+    </registrtation>
+  </registrations>
+  <participants id="16">
+    <participant reference="10"/>
+    <participant reference="4"/>
+    <participant id="17">
       <name>Jason</name>
     </participant>
+    <participant id="18">
+      <name>0</name>
+    </participant>
+    <participant id="19">
+      <name>ja t</name>
+    </participant>
+    <participant id="20">
+      <name>Jack</name>
+    </participant>
+    <participant id="21">
+      <name>Jess</name>
+    </participant>
+    <participant id="22">
+      <name>Jec</name>
+    </participant>
+    <participant id="23">
+      <name>John</name>
+    </participant>
   </participants>
-  <events id="7"/>
+  <events id="24">
+    <event reference="5"/>
+    <event reference="12"/>
+    <event id="25">
+      <name>Concert</name>
+      <eventDate id="26">2017-01-11</eventDate>
+      <startTime id="27">15:37:39</startTime>
+      <endTime id="28">15:40:00</endTime>
+    </event>
+  </events>
 </manager>
